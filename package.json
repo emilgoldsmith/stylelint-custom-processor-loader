@@ -1,0 +1,27 @@
+{
+  "name": "stylelint-custom-processor-loader",
+  "version": "0.0.0",
+  "description": "A Webpack loader for stylelint used with custom processors",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilgoldsmith/stylelint-custom-processor-loader.git"
+  },
+  "keywords": [
+    "lint",
+    "linter",
+    "stylelint",
+    "loader",
+    "webpack",
+    "webpack-loader",
+    "styled-components",
+    "custom-processor",
+    "css"
+  ],
+  "author": "Emil Goldsmith Olesen <emil.goldsmith@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emilgoldsmith/stylelint-custom-processor-loader/issues"
+  },
+  "homepage": "https://github.com/emilgoldsmith/stylelint-custom-processor-loader#readme"
+}
