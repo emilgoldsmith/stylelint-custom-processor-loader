@@ -1,7 +1,4 @@
-'use strict';
-
 import stylelint from 'stylelint';
-import loaderUtils from 'loader-utils';
 
 /**
  * Class representing a StylelintError.

@@ -2,7 +2,7 @@
   "name": "stylelint-custom-processor-loader",
   "version": "0.0.1-alpha.0",
   "description": "A Webpack loader for stylelint used with custom processors",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emilgoldsmith/stylelint-custom-processor-loader.git"
@@ -10,7 +10,8 @@
   "scripts": {
     "test": "jest",
     "build": "babel index.js -o dist/index.js",
-    "real-world-test": "yarn build && webpack --config webpack.test.js"
+    "real-world-test": "yarn build && webpack --config webpack.test.js",
+    "prepublishOnly": "yarn build"
   },
   "keywords": [
     "lint",
