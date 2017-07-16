@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest",
     "build": "babel index.js -o dist/index.js",
-    "real-world-test": "yarn build && webpack --config webpack.test.js",
+    "real-world-test": "yarn build && webpack --config webpack-test.config.js",
     "prepublishOnly": "yarn build"
   },
   "keywords": [

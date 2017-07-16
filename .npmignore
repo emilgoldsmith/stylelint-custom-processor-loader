@@ -1,8 +1,8 @@
 index.js
 .stylelintrc
 test/
-test-webpack.js
-webpack.test.js
+webpack-test.out.js
+webpack-test.config.js
 .git
 .gitignore
 .babelrc

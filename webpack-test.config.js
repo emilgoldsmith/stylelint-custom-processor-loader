@@ -10,6 +10,6 @@ module.exports = {
     ],
   },
   output: {
-    filename: 'test-webpack.js',
+    filename: 'webpack-test.out.js',
   },
 };
