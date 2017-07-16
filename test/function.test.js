@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import fs from 'fs';
 
 describe('general functionality', () => {
   it('works', done => {
@@ -12,6 +13,9 @@ describe('general functionality', () => {
             exclude: /node_modules/,
           },
         ],
+      },
+      output: {
+        filename: './test/webpack-test.out.js',
       },
     })
     .run((err, stats) => {
@@ -31,5 +35,9 @@ describe('general functionality', () => {
       }
       done();
     });
+  });
+
+  afterAll(() => {
+    fs.unlinkSync('./test/webpack-test.out.js');
   });
 });
