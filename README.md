@@ -1,4 +1,5 @@
-# stylelint-custom-processor-loader
+# stylelint-custom-processor-loader [![CircleCI][CircleCI-badge]][CircleCI-url]
+
 
 A Webpack loader for stylelint used with custom processors
 
@@ -58,3 +59,7 @@ modules: {
 Licensed under the MIT License, Copyright © 2017 Emil Goldsmith Olesen. See [LICENSE](./LICENSE) for more information.
 
 Thank you to [MoOx](https://github.com/MoOx) for his [`eslint-loader`](https://github.com/MoOx/eslint-loader) which was often referenced and used for inspiration during development of this project.
+
+
+[CircleCI-badge]: https://circleci.com/gh/emilgoldsmith/stylelint-custom-processor-loader/tree/master.svg?style=svg
+[CircleCI-url]: https://circleci.com/gh/emilgoldsmith/stylelint-custom-processor-loader/tree/master
