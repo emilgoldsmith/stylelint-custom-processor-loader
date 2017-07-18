@@ -1,5 +1,7 @@
 # stylelint-custom-processor-loader [![CircleCI][CircleCI-badge]][CircleCI-url]
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/emilgoldsmith/stylelint-custom-processor-loader.svg)](https://greenkeeper.io/)
+
 
 A Webpack loader for stylelint used with custom processors
 
