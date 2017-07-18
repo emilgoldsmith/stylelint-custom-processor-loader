@@ -29,8 +29,8 @@ jobs:
 
       # Install globals needed for Github integrations
       - run: |
-        yarn global add greenkeeper-lockfile@1.7.2
-        yarn global add coveralls@2.13.1
+          yarn global add greenkeeper-lockfile@1.7.2
+          yarn global add coveralls@2.13.1
 
       # Update yarn.lock
       - run: greenkeeper-lockfile-update
