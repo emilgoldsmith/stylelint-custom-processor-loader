@@ -21,7 +21,17 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
 
+      - run: yarn global add greenkeeper-lockfile@1.7.2
+
+      - run: yarn global add coveralls@2.13.1
+
+      # Update yarn.lock
+      - run: greenkeeper-lockfile-update
+
       - run: yarn test -- --coverage
 
+      # Commit and push yarn.lock
+      - run: greenkeeper-lockfile-upload
+
       # Send coverage to Coveralls
-      - run: cat ./.coverage/lcov.info | ./node_modules/.bin/coveralls
+      - run: cat ./.coverage/lcov.info | coveralls
