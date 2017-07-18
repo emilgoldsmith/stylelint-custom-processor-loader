@@ -26,20 +26,26 @@ jobs:
           mkdir ~/.yarn-global
           yarn config set prefix ~/.yarn-global
           export PATH="$PATH:$(yarn global bin)"
-          echo $PATH
 
       # Install globals needed for Github integrations
       - run: |
+          export PATH="$PATH:$(yarn global bin)"
           yarn global add greenkeeper-lockfile@1.7.2
           yarn global add coveralls@2.13.1
 
       # Update yarn.lock
-      - run: greenkeeper-lockfile-update
+      - run: |
+          export PATH="$PATH:$(yarn global bin)"
+          greenkeeper-lockfile-update
 
       - run: yarn test -- --coverage
 
       # Commit and push yarn.lock
-      - run: greenkeeper-lockfile-upload
+      - run: |
+          export PATH="$PATH:$(yarn global bin)"
+          greenkeeper-lockfile-upload
 
       # Send coverage to Coveralls
-      - run: cat ./.coverage/lcov.info | coveralls
+      - run: |
+          export PATH="$PATH:$(yarn global bin)"
+          cat ./.coverage/lcov.info | coveralls
