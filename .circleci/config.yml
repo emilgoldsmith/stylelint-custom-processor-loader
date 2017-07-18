@@ -21,9 +21,16 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
 
-      - run: yarn global add greenkeeper-lockfile@1.7.2
+      # Prep yarn global adds
+      - run: |
+          mkdir ~/.yarn-global
+          yarn config set prefex ~/.yarn-global
+          export PATH="$PATH:$(yarn global bin)"
 
-      - run: yarn global add coveralls@2.13.1
+      # Install globals needed for Github integrations
+      - run: |
+        yarn global add greenkeeper-lockfile@1.7.2
+        yarn global add coveralls@2.13.1
 
       # Update yarn.lock
       - run: greenkeeper-lockfile-update
