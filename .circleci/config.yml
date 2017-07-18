@@ -26,6 +26,7 @@ jobs:
           mkdir ~/.yarn-global
           yarn config set prefix ~/.yarn-global
           export PATH="$PATH:$(yarn global bin)"
+          echo $PATH
 
       # Install globals needed for Github integrations
       - run: |
