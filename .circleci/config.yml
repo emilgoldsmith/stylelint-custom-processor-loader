@@ -24,9 +24,8 @@ jobs:
       # Prep yarn global adds
       - run: |
           mkdir ~/.yarn-global
-          yarn config set prefex ~/.yarn-global
+          yarn config set prefix ~/.yarn-global
           export PATH="$PATH:$(yarn global bin)"
-          yarn global bin
 
       # Install globals needed for Github integrations
       - run: |
