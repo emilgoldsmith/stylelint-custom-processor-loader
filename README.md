@@ -1,6 +1,8 @@
-# stylelint-custom-processor-loader [![CircleCI][CircleCI-badge]][CircleCI-url]
+# stylelint-custom-processor-loader 
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/emilgoldsmith/stylelint-custom-processor-loader.svg)](https://greenkeeper.io/)
+[![npm-version][npm-badge]][npm-url]
+[![CircleCI][CircleCI-badge]][CircleCI-url]
+[![Greenkeeper][Greenkeeper-badge]][Greenkeeper-url]
 
 
 A Webpack loader for stylelint used with custom processors
@@ -63,5 +65,9 @@ Licensed under the MIT License, Copyright © 2017 Emil Goldsmith Olesen. See [LI
 Thank you to [MoOx](https://github.com/MoOx) for his [`eslint-loader`](https://github.com/MoOx/eslint-loader) which was often referenced and used for inspiration during development of this project.
 
 
-[CircleCI-badge]: https://circleci.com/gh/emilgoldsmith/stylelint-custom-processor-loader/tree/master.svg?style=svg
+[CircleCI-badge]: https://img.shields.io/circleci/project/github/emilgoldsmith/stylelint-custom-processor-loader/master.svg
 [CircleCI-url]: https://circleci.com/gh/emilgoldsmith/stylelint-custom-processor-loader/tree/master
+[Greenkeeper-badge]: https://badges.greenkeeper.io/emilgoldsmith/stylelint-custom-processor-loader.svg
+[Greenkeeper-url]: https://greenkeeper.io
+[npm-badge]: https://img.shields.io/npm/v/stylelint-custom-processor-loader.svg
+[npm-url]: https://www.npmjs.com/package/stylelint-custom-processor-loader
