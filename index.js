@@ -11,7 +11,7 @@ class StylelintError extends Error {
    */
   constructor(messages) {
     super();
-    this.name = "StylelintError";
+    this.name = 'StylelintError';
     this.message = messages;
     this.stack = '';
   }
@@ -27,6 +27,7 @@ class StylelintError extends Error {
   }
 }
 
+// eslint-disable-next-line func-names
 module.exports = function(content) {
   const callback = this.async();
   stylelint

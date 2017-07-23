@@ -1,0 +1,22 @@
+extends:
+  - airbnb-base
+  - prettier
+
+parserOptions:
+  ecmaVersion: 6
+  sourceType: module
+
+env:
+  node: true
+  es6: true
+  jest: true
+
+plugins:
+  - prettier
+
+rules:
+  prettier/prettier:
+    - error
+    - singleQuote: true
+      trailingComma: all
+  no-console: error

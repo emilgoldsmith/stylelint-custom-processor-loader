@@ -17,20 +17,22 @@ describe('general functionality', () => {
       output: {
         filename: './test/webpack-test.out.js',
       },
-    })
-    .run((err, stats) => {
+    }).run((err, stats) => {
       if (err) {
         const dummyThrower = e => {
           throw e;
-        }
+        };
         expect(dummyThrower.bind(null, err)).not.toThrow();
-        return done();
+        done();
+        return;
       }
       const json = stats.toJson();
       if (stats.hasErrors()) {
-        json.errors.forEach(err => console.log(err));
+        // eslint-disable-next-line no-console
+        json.errors.forEach(stylelintError => console.log(stylelintError));
       }
       if (stats.hasWarnings()) {
+        // eslint-disable-next-line no-console
         json.warnings.forEach(warn => console.log(warn));
       }
       done();
