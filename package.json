@@ -12,7 +12,7 @@
     "lint": "eslint index.js 'test/*'",
     "build": "babel index.js -o dist/index.js && echo 'Build successfully completed'",
     "real-world-test": "yarn build && webpack --config webpack-test.config.js; rm webpack-test.out.js",
-    "prettier-fix": "prettier --single-quote --trailing-comma all --write",
+    "prettier-fix": "prettier --single-quote --trailing-comma es5 --write",
     "precommit": "lint-staged",
     "prepush": "yarn run lint && yarn test && yarn build && echo '\nprepush tests passed, pushing now...\n'",
     "prepublishOnly": "yarn build"
