@@ -1,11 +1,16 @@
 module.exports = {
-  entry: './test/fixtures/styled-components-example.js',
+  entry: './test/fixtures/styled-components/valid.js',
   module: {
     rules: [
       {
         test: /\.js/,
-        loader: './dist/index',
         exclude: /node_modules/,
+        use: [{
+          loader: './dist/index',
+          options: {
+            configPath: './test/configs/styled-components.json',
+          },
+        }],
       },
     ],
   },

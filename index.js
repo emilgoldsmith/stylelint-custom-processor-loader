@@ -1,4 +1,5 @@
 import stylelint from 'stylelint';
+import loaderUtils from 'loader-utils';
 
 /**
  * Class representing a StylelintError.
@@ -29,13 +30,20 @@ class StylelintError extends Error {
 
 // eslint-disable-next-line func-names
 module.exports = function(content) {
+  const options = loaderUtils.getOptions(this);
+  const lintArgument = {
+    code: content,
+    codeFilename: this.resourcePath,
+    formatter: 'string',
+  };
+  if (options && options.configPath) {
+    let processedPath = loaderUtils.stringifyRequest(this, options.configPath);
+    processedPath = processedPath.substring(1, processedPath.length - 1);
+    lintArgument.configFile = processedPath;
+  }
   const callback = this.async();
   stylelint
-    .lint({
-      code: content,
-      codeFilename: this.resourcePath,
-      formatter: 'string',
-    })
+    .lint(lintArgument)
     .then(resultObject => {
       const { output } = resultObject;
       if (resultObject.errored) {
