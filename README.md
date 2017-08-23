@@ -29,7 +29,7 @@ npm i -D stylelint-custom-processor-loader
 
 ### Stylelint Config
 
-As of this early stage stylelint config is loaded only be the default method of `stylelint` as seen in [their documentation](https://stylelint.io/user-guide/configuration/#loading-the-configuration-object). The recommended way is creating a `.stylelintrc` file in the root of your project.
+Stylelint config can be added as a file in the default way as seen in [Stylelint's documentation](https://stylelint.io/user-guide/configuration/#loading-the-configuration-object). The recommended way is creating a `.stylelintrc` file in the root of your project, but if you want to use a custom file path you can also use the [configPath](https://github.com/emilgoldsmith/stylelint-custom-processor-loader/blob/master/README.md#configPath) option.
 
 ### Webpack Config
 
@@ -60,13 +60,36 @@ modules: {
       use: [
         'babel-loader',
         'stylelint-custom-processor-loader',
-       ],
+      ],
       exclude: /node_modules/,
     },
   ],
 }
 ```
 > NOTE: As always with Webpack loaders order can be very important, in general this loader should always be the first one loaded (which means the last one in the list) as seen above in the babel-loader example.
+
+## Options
+### configPath
+Give the path to a non-default named Stylelint config. The recommended way to specify it is in your Webpack config as follows:
+```js
+modules: {
+  rules: [
+    {
+      test: /\.jsx?/,
+      use: [
+        'babel-loader',
+        {
+          loader: 'stylelint-custom-processor-loader',
+          options: {
+            configPath: './path/to/stylelint/config',
+          },
+        },
+      ],
+      exclude: /node_modules/,
+    },
+  ],
+}
+```
 
 ## License
 
