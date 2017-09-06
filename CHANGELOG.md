@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.1] - 2017-09-05
+### Fixed
+- Updated peerDependencies to be in sync with devDependencies
+
 ## [0.2.0] - 2017-08-23
 ### Added
 - CODEOWNERS file
@@ -34,6 +38,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Basic implementation
 
 
-[Unreleased]: https://github.com/emilgoldsmith/stylelint-custom-processor-loader/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/emilgoldsmith/stylelint-custom-processor-loader/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/emilgoldsmith/stylelint-custom-processor-loader/compare/v0.2.0...0.2.1
 [0.2.0]: https://github.com/emilgoldsmith/stylelint-custom-processor-loader/compare/v0.1.1...0.2.0
 [0.1.1]: https://github.com/emilgoldsmith/stylelint-custom-processor-loader/compare/v0.1.0...v0.1.1
