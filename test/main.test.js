@@ -6,7 +6,9 @@ import {
   handleCatch,
 } from './helpers';
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000; // eslint-disable-line no-undef
+if (process.env.CIRCLECI) {
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000; // eslint-disable-line no-undef
+}
 
 describe('stylelint-custom-processor', () => {
   afterAll(deleteWebpackOutput);
