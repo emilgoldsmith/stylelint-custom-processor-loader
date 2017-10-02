@@ -6,6 +6,8 @@ import {
   assertSpecificErrors,
 } from './helpers';
 
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000; // eslint-disable-line no-undef
+
 describe('options', () => {
   afterAll(deleteWebpackOutput);
 
