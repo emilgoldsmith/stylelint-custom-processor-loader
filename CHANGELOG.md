@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Updated Stylelint peerDependency to >= 7.8
+- Updated Webpack peerDependency to >= 2
+- Updated recommended Node version to >= 6
 
 ## [0.2.1] - 2017-09-05
 ### Fixed
