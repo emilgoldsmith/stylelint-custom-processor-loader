@@ -40,6 +40,10 @@ jobs:
 
       - run: yarn test -- --coverage
 
+      - run: yarn run lint
+
+      - run: yarn run build
+
       # Commit and push yarn.lock
       - run: |
           export PATH="$PATH:$(yarn global bin)"
