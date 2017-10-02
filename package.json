@@ -1,6 +1,6 @@
 {
   "name": "stylelint-custom-processor-loader",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A Webpack loader for stylelint used with custom processors",
   "main": "dist/index.js",
   "repository": {
