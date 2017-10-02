@@ -38,11 +38,13 @@ jobs:
           export PATH="$PATH:$(yarn global bin)"
           greenkeeper-lockfile-update
 
-      - run: yarn test -- --coverage
+      - run: yarn test
 
       - run: yarn run lint
 
       - run: yarn run build
+
+      - run: yarn test -- --coverage
 
       # Commit and push yarn.lock
       - run: |
