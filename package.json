@@ -71,5 +71,26 @@
   },
   "dependencies": {
     "loader-utils": "^1.1.0"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "babel-cli",
+      "babel-core",
+      "babel-jest",
+      "babel-plugin-transform-object-rest-spread",
+      "bluebird",
+      "css-loader",
+      "eslint",
+      "eslint-config-airbnb-base",
+      "eslint-config-prettier",
+      "eslint-plugin-import",
+      "eslint-plugin-prettier",
+      "husky",
+      "jest",
+      "jest-cli",
+      "lint-staged",
+      "prettier",
+      "stylelint-config-standard"
+    ]
   }
 }
