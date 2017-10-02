@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint index.js 'test/*'",
-    "build": "babel index.js -o dist/index.js && echo 'Build successfully completed'",
+    "build": "mkdir -p dist && babel index.js -o dist/index.js && echo 'Build successfully completed'",
     "real-world-test": "yarn build && webpack --config webpack-test.config.js; rm webpack-test.out.js",
     "prettier-fix": "prettier --single-quote --trailing-comma es5 --write",
     "precommit": "lint-staged",
