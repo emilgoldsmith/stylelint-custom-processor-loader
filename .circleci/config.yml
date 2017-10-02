@@ -54,9 +54,9 @@ jobs:
           export PATH="$PATH:$(yarn global bin)"
           cat ./.coverage/lcov.info | coveralls
 
-  node_4:
+  node_6:
     docker:
-      - image: circleci/node:4.8
+      - image: circleci/node:6.10
 
     working_directory: ~/repo
 
@@ -66,14 +66,14 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-node_4-{{ arch }}-{{ checksum "yarn.lock" }}
+          - v1-dependencies-node_6-{{ arch }}-{{ checksum "yarn.lock" }}
 
       - run: yarn install
 
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-node_4-{{ arch }}-{{ checksum "yarn.lock" }}
+          key: v1-dependencies-node_6-{{ arch }}-{{ checksum "yarn.lock" }}
 
       - run: yarn test
 
@@ -144,6 +144,6 @@ workflows:
   test_multiple_dependencies:
     jobs:
       - main
-      - node_4
+      - node_6
       - webpack_2
       - stylelint_7
