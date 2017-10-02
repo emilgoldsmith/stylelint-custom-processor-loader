@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  main:
     docker:
       - image: circleci/node:7.10
 
@@ -12,14 +12,14 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ arch }}-{{ checksum "yarn.lock" }}
+          - v1-dependencies-node_7-{{ arch }}-{{ checksum "yarn.lock" }}
 
       - run: yarn install
 
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ arch }}-{{ checksum "yarn.lock" }}
+          key: v1-dependencies-node_7-{{ arch }}-{{ checksum "yarn.lock" }}
 
       # Prep yarn global adds
       - run: |
@@ -53,3 +53,97 @@ jobs:
       - run: |
           export PATH="$PATH:$(yarn global bin)"
           cat ./.coverage/lcov.info | coveralls
+
+  node_4:
+    docker:
+      - image: circleci/node:4.8
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-node_4-{{ arch }}-{{ checksum "yarn.lock" }}
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-node_4-{{ arch }}-{{ checksum "yarn.lock" }}
+
+      - run: yarn test
+
+      - run: yarn run lint
+
+      - run: yarn run build
+
+  webpack_2:
+    docker:
+      - image: circleci/node:7.10
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-node_7-{{ arch }}-{{ checksum "yarn.lock" }}
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-node_7-{{ arch }}-{{ checksum "yarn.lock" }}
+
+      - run: yarn add webpack@2
+
+      - run: yarn test
+
+      - run: yarn run lint
+
+      - run: yarn run build
+
+  stylelint_7:
+    docker:
+      - image: circleci/node:7.10
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-node_7-{{ arch }}-{{ checksum "yarn.lock" }}
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-node_7-{{ arch }}-{{ checksum "yarn.lock" }}
+
+      - run: yarn add stylelint@7
+
+      - run: yarn test
+
+      - run: yarn run lint
+
+      - run: yarn run build
+
+workflows:
+  version: 2
+  test_multiple_dependencies:
+    jobs:
+      - main
+      - node_4
+      - webpack_2
+      - stylelint_7
