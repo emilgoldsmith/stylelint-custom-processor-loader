@@ -36,7 +36,7 @@ export const prepWebpack = (entry, options) => {
 export const deleteWebpackOutput = () =>
   fs.unlinkSync('./test/webpack-test.out.js');
 
-export const assertNoErrors = stats => {
+export const assertNoErrorsOrWarnings = stats => {
   expect(stats.hasErrors()).toBe(false);
   expect(stats.hasWarnings()).toBe(false);
 };
@@ -52,6 +52,16 @@ export const assertSpecificErrors = (...args) => stats => {
   args.forEach((regex, index) => {
     expect(regex.test(errors[index])).toBe(true);
     expect(stats.hasWarnings()).toBe(false);
+  });
+};
+
+export const assertSpecificWarnings = (...args) => stats => {
+  expect(stats.hasWarnings()).toBe(true);
+  const warnings = stats.toJson().warnings;
+  expect(warnings.length).toBe(args.length);
+  args.forEach((regex, index) => {
+    expect(regex.test(warnings[index])).toBe(true);
+    expect(stats.hasErrors()).toBe(false);
   });
 };
 

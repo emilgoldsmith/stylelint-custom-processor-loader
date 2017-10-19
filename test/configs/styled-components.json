@@ -3,6 +3,7 @@
   "extends": "stylelint-config-standard",
   "syntax": "scss",
   "rules": {
-    "color-named": "never"
+    "color-named": "never",
+    "block-no-empty": [true, { "severity": "warning" }]
   }
 }
