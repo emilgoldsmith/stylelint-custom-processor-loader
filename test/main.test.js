@@ -1,8 +1,9 @@
 import {
   prepWebpack,
   deleteWebpackOutput,
+  assertNoErrorsOrWarnings,
   assertSpecificErrors,
-  assertNoErrors,
+  assertSpecificWarnings,
   handleCatch,
 } from './helpers';
 
@@ -25,10 +26,27 @@ describe('stylelint-custom-processor', () => {
       .catch(handleCatch);
   });
 
+  it('finds warnings', done => {
+    const webpackInstance = prepWebpack(
+      './test/fixtures/styled-components/warnings.js'
+    );
+
+    const expectedWarningsRegex = /block-no-empty[\s\S]*/;
+    webpackInstance
+      .run()
+      .then(assertSpecificWarnings(expectedWarningsRegex))
+      .then(done)
+      .catch(handleCatch);
+  });
+
   it('handles correct file', done => {
     const webpackInstance = prepWebpack(
       './test/fixtures/styled-components/valid.js'
     );
-    webpackInstance.run().then(assertNoErrors).then(done).catch(handleCatch);
+    webpackInstance
+      .run()
+      .then(assertNoErrorsOrWarnings)
+      .then(done)
+      .catch(handleCatch);
   });
 });

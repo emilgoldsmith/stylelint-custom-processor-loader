@@ -48,6 +48,8 @@ module.exports = function(content) {
       const { output } = resultObject;
       if (resultObject.errored) {
         this.emitError(new StylelintError(output));
+      } else if (output) {
+        this.emitWarning(new StylelintError(output));
       }
       callback(null, content);
     })
