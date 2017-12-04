@@ -67,7 +67,7 @@
     "stylelint": "~8.2.0",
     "stylelint-config-standard": "~17.0.0",
     "stylelint-processor-styled-components": "~1.2.0",
-    "webpack": "~3.8.1"
+    "webpack": "~3.10.0"
   },
   "dependencies": {
     "loader-utils": "~1.1.0"
