@@ -64,7 +64,7 @@
     "prettier": "~1.5.3",
     "react": "~16.2.0",
     "styled-components": "~2.2.1",
-    "stylelint": "~8.2.0",
+    "stylelint": "~8.3.0",
     "stylelint-config-standard": "~17.0.0",
     "stylelint-processor-styled-components": "~1.2.0",
     "webpack": "~3.10.0"
