@@ -4,7 +4,7 @@ import fs from 'fs';
 
 export const prepWebpack = (entry, options) => {
   const rule = {
-    loader: './index',
+    loader: `${__dirname}/../index`,
   };
   if (options) {
     Object.assign(rule, { options });
@@ -25,7 +25,7 @@ export const prepWebpack = (entry, options) => {
       ],
     },
     output: {
-      filename: './test/webpack-test.out.js',
+      path: `${__dirname}/webpack-test.out.js`,
     },
   });
 
@@ -34,7 +34,7 @@ export const prepWebpack = (entry, options) => {
 };
 
 export const deleteWebpackOutput = () =>
-  fs.unlinkSync('./test/webpack-test.out.js');
+  fs.unlinkSync(`${__dirname}/webpack-test.out.js`);
 
 export const assertNoErrorsOrWarnings = stats => {
   expect(stats.hasErrors()).toBe(false);
@@ -63,12 +63,4 @@ export const assertSpecificWarnings = (...args) => stats => {
     expect(regex.test(warnings[index])).toBe(true);
     expect(stats.hasErrors()).toBe(false);
   });
-};
-
-const dummyThrower = e => {
-  throw e;
-};
-
-export const handleCatch = err => {
-  expect(dummyThrower.bind(null, err)).not.toThrow();
 };

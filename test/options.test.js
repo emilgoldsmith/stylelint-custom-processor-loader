@@ -2,45 +2,44 @@ import {
   prepWebpack,
   deleteWebpackOutput,
   assertNoErrors,
-  handleCatch,
   assertSpecificErrors,
 } from './helpers';
 
 if (process.env.CIRCLECI) {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000; // eslint-disable-line no-undef
+  jest.setTimeout(5000);
 }
 
 describe('options', () => {
   afterAll(deleteWebpackOutput);
 
-  it('handles no options passed', done => {
+  it('handles no options passed', () => {
     const webpackInstance = prepWebpack(
-      './test/fixtures/styled-components/valid.js'
+      `${__dirname}/fixtures/styled-components/valid.js`
     );
-    webpackInstance.run().then(assertNoErrors).then(done).catch(handleCatch);
+    return webpackInstance.run().then(assertNoErrors);
   });
 
-  it('handles configPath option', done => {
+  it('handles configPath option', () => {
     const webpackInstance = prepWebpack(
-      './test/fixtures/styled-components/valid.js',
+      `${__dirname}/fixtures/styled-components/valid.js`,
       {
-        configPath: './test/configs/styled-components.json',
+        configPath: `${__dirname}/configs/styled-components.json`,
       }
     );
-    webpackInstance.run().then(assertNoErrors).then(done).catch(handleCatch);
+    return webpackInstance.run().then(assertNoErrors);
   });
 
-  it('chooses correct config', done => {
+  it('chooses correct config', () => {
     const plainWebpack = prepWebpack(
-      './test/fixtures/config-tests/color-named.css',
+      `${__dirname}/fixtures/config-tests/color-named.css`,
       {
-        configPath: './test/configs/plain.json',
+        configPath: `${__dirname}/configs/plain.json`,
       }
     );
     const noNamedColorWebpack = prepWebpack(
-      './test/fixtures/config-tests/color-named.css',
+      `${__dirname}/fixtures/config-tests/color-named.css`,
       {
-        configPath: './test/configs/color-named.json',
+        configPath: `${__dirname}/configs/color-named.json`,
       }
     );
 
@@ -49,8 +48,6 @@ describe('options', () => {
       .run()
       .then(assertSpecificErrors(/color-named/));
 
-    Promise.all([plainWebpackPromise, noNamedColorWebpackPromise])
-      .then(done)
-      .catch(handleCatch);
+    return Promise.all([plainWebpackPromise, noNamedColorWebpackPromise]);
   });
 });
