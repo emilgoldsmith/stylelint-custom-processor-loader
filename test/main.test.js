@@ -4,49 +4,40 @@ import {
   assertNoErrorsOrWarnings,
   assertSpecificErrors,
   assertSpecificWarnings,
-  handleCatch,
 } from './helpers';
 
 if (process.env.CIRCLECI) {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000; // eslint-disable-line no-undef
+  jest.setTimeout(5000);
 }
 
 describe('stylelint-custom-processor', () => {
   afterAll(deleteWebpackOutput);
 
-  it('finds errors', done => {
+  it('finds errors', () => {
     const webpackInstance = prepWebpack(
-      './test/fixtures/styled-components/invalid.js'
+      `${__dirname}/fixtures/styled-components/invalid.js`
     );
     const expectedErrorsRegex = /color-named[\s\S]*?max-empty-lines[\s\S]*?declaration-empty-line-before/;
-    webpackInstance
+    return webpackInstance
       .run()
-      .then(assertSpecificErrors(expectedErrorsRegex))
-      .then(done)
-      .catch(handleCatch);
+      .then(assertSpecificErrors(expectedErrorsRegex));
   });
 
-  it('finds warnings', done => {
+  it('finds warnings', () => {
     const webpackInstance = prepWebpack(
-      './test/fixtures/styled-components/warnings.js'
+      `${__dirname}/fixtures/styled-components/warnings.js`
     );
 
     const expectedWarningsRegex = /block-no-empty[\s\S]*/;
-    webpackInstance
+    return webpackInstance
       .run()
-      .then(assertSpecificWarnings(expectedWarningsRegex))
-      .then(done)
-      .catch(handleCatch);
+      .then(assertSpecificWarnings(expectedWarningsRegex));
   });
 
-  it('handles correct file', done => {
+  it('handles correct file', () => {
     const webpackInstance = prepWebpack(
-      './test/fixtures/styled-components/valid.js'
+      `${__dirname}/fixtures/styled-components/valid.js`
     );
-    webpackInstance
-      .run()
-      .then(assertNoErrorsOrWarnings)
-      .then(done)
-      .catch(handleCatch);
+    return webpackInstance.run().then(assertNoErrorsOrWarnings);
   });
 });
