@@ -37,7 +37,7 @@ This package currently only aims at supporting Webpack 2+.
 
 If you are for example using [Styled Components](https://www.styled-components.com/) you could simply add the following to your webpack config:
 ```js
-modules: {
+module: {
   rules: [
     {
       test: /\.jsx?/,
@@ -53,7 +53,7 @@ And you should now have linting your Styled Components css integrated with Webpa
 #### Webpack Babel Example
 
 ```js
-modules: {
+module: {
   rules: [
     {
       test: /\.jsx?/,
@@ -72,7 +72,7 @@ modules: {
 ### configPath
 Give the path to a non-default named Stylelint config. The recommended way to specify it is in your Webpack config as follows:
 ```js
-modules: {
+module: {
   rules: [
     {
       test: /\.jsx?/,
