@@ -18,7 +18,7 @@ If you just want to use normal Stylelint I would definitely suggest using the [`
 
 ## Installation
 
-First install the loader with your favourite package manager
+First install the loader and stylelint with your favourite package manager
 ```
 yarn add -D stylelint-custom-processor-loader
 ```
@@ -26,6 +26,8 @@ Or with npm
 ```
 npm i -D stylelint-custom-processor-loader
 ```
+
+This package will not work without [stylelint](https://github.com/stylelint/stylelint) as it is a peer dependency in the `package.json` and it is just a development tool to connect webpack and stylelint together.
 
 ### Stylelint Config
 
