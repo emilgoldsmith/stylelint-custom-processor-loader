@@ -95,7 +95,7 @@ module: {
 
 ### emitWarning (default: `false`)
 
-Always return warnings if this option is set to `true`. If you're using hot module replacement, you may wish to enable this in development, or else updates will be skipped when there's an stylelint error.
+Always return warnings if this option is set to `true`. If you're using hot module replacement, you may wish to enable this in development, or else updates will be skipped when there's a stylelint error.
 
 ## License
 
