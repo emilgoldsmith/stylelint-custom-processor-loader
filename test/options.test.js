@@ -3,6 +3,7 @@ import {
   deleteWebpackOutput,
   assertNoErrors,
   assertSpecificErrors,
+  assertSpecificWarnings,
 } from './helpers';
 
 if (process.env.CIRCLECI) {
@@ -27,6 +28,19 @@ describe('options', () => {
       }
     );
     return webpackInstance.run().then(assertNoErrors);
+  });
+
+  it('handles emitWarning option', () => {
+    const webpackInstance = prepWebpack(
+      `${__dirname}/fixtures/styled-components/invalid.js`,
+      {
+        emitWarning: true,
+      }
+    );
+    const expectedWarningsRegex = /color-named[\s\S]*?max-empty-lines[\s\S]*?declaration-empty-line-before/;
+    return webpackInstance
+      .run()
+      .then(assertSpecificWarnings(expectedWarningsRegex));
   });
 
   it('chooses correct config', () => {
