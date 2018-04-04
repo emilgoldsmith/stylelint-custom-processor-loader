@@ -36,6 +36,10 @@ module.exports = function(content) {
     codeFilename: this.resourcePath,
     formatter: 'string',
   };
+
+  // shortcut for emitWarning option
+  const emitWarning = options && options.emitWarning;
+
   if (options && options.configPath) {
     let processedPath = loaderUtils.stringifyRequest(this, options.configPath);
     processedPath = processedPath.substring(1, processedPath.length - 1);
@@ -46,7 +50,7 @@ module.exports = function(content) {
     .lint(lintArgument)
     .then(resultObject => {
       const { output } = resultObject;
-      if (resultObject.errored) {
+      if (resultObject.errored && !emitWarning) {
         this.emitError(new StylelintError(output));
       } else if (output) {
         this.emitWarning(new StylelintError(output));
