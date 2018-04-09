@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.5.0] - 2018-04-09
+### Added
+- emitWarning option which instructs the loader to emit all errors as webpack warnings
+
 ## [0.4.0] - 2017-10-24
 ### Fixed
 - Webpack now also outputs Stylelint warnings
@@ -51,7 +55,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Basic implementation
 
 
-[Unreleased]: https://github.com/emilgoldsmith/stylelint-custom-processor-loader/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/emilgoldsmith/stylelint-custom-processor-loader/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/emilgoldsmith/stylelint-custom-processor-loader/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/emilgoldsmith/stylelint-custom-processor-loader/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/emilgoldsmith/stylelint-custom-processor-loader/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/emilgoldsmith/stylelint-custom-processor-loader/compare/v0.2.0...v0.2.1
