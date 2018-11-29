@@ -1,5 +1,6 @@
 import stylelint from 'stylelint';
 import loaderUtils from 'loader-utils';
+import { join } from 'path';
 
 /**
  * Class representing a StylelintError.
@@ -28,6 +29,14 @@ class StylelintError extends Error {
   }
 }
 
+const projectRoot = process.cwd();
+function resolveConfigPath(configPath) {
+  return (
+    require.resolve(join(projectRoot, configPath)) ||
+    require.resolve(configPath)
+  );
+}
+
 // eslint-disable-next-line func-names
 module.exports = function(content) {
   const options = loaderUtils.getOptions(this);
@@ -41,9 +50,16 @@ module.exports = function(content) {
   const emitWarning = options && options.emitWarning;
 
   if (options && options.configPath) {
-    let processedPath = loaderUtils.stringifyRequest(this, options.configPath);
-    processedPath = processedPath.substring(1, processedPath.length - 1);
-    lintArgument.configFile = processedPath;
+    try {
+      options.configPath = resolveConfigPath(options.config);
+    } catch (error) {
+      let processedPath = loaderUtils.stringifyRequest(
+        this,
+        options.configPath
+      );
+      processedPath = processedPath.substring(1, processedPath.length - 1);
+      lintArgument.configFile = processedPath;
+    }
   }
   const callback = this.async();
   stylelint
