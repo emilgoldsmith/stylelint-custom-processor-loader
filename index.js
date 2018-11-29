@@ -51,7 +51,7 @@ module.exports = function(content) {
 
   if (options && options.configPath) {
     try {
-      options.configPath = resolveConfigPath(options.config);
+      lintArgument.configFile = resolveConfigPath(options.config);
     } catch (error) {
       let processedPath = loaderUtils.stringifyRequest(
         this,
