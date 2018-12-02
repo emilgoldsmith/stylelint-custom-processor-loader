@@ -29,12 +29,21 @@ class StylelintError extends Error {
   }
 }
 
+// prevents process-ending errors if m is non-existent,
+// returns null if non-existent
+function safeResolve(m) {
+  try {
+    return require.resolve(m);
+  } catch (error) {
+    return null;
+  }
+}
+
+// first tries to resolve from root directory...
+// if non-existent, tries to resolve from node_modules...
 const projectRoot = process.cwd();
 function resolveConfigPath(configPath) {
-  return (
-    require.resolve(join(projectRoot, configPath)) ||
-    require.resolve(configPath)
-  );
+  return safeResolve(join(projectRoot, configPath)) || safeResolve(configPath);
 }
 
 // eslint-disable-next-line func-names
@@ -50,9 +59,13 @@ module.exports = function(content) {
   const emitWarning = options && options.emitWarning;
 
   if (options && options.configPath) {
-    try {
-      lintArgument.configFile = resolveConfigPath(options.config);
-    } catch (error) {
+    // resolve the path
+    const resolved = resolveConfigPath(options.config);
+    if (resolved) {
+      // if it exists, use this to set the `configFile` prop
+      lintArgument.configFile = resolved;
+    } else {
+      // otherwise, do it the old way
       let processedPath = loaderUtils.stringifyRequest(
         this,
         options.configPath
