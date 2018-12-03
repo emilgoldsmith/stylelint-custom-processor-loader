@@ -60,7 +60,7 @@ module.exports = function(content) {
 
   if (options && options.configPath) {
     // resolve the path
-    const resolved = resolveConfigPath(options.config);
+    const resolved = resolveConfigPath(options.configPath);
     if (resolved) {
       // if it exists, use this to set the `configFile` prop
       lintArgument.configFile = resolved;
