@@ -42,7 +42,7 @@ If you are for example using [Styled Components](https://www.styled-components.c
 module: {
   rules: [
     {
-      test: /\.jsx?/,
+      test: /\.jsx?$/,
       loader: 'stylelint-custom-processor-loader',
       exclude: /node_modules/,
     },
@@ -58,7 +58,7 @@ And you should now have linting your Styled Components css integrated with Webpa
 module: {
   rules: [
     {
-      test: /\.jsx?/,
+      test: /\.jsx?$/,
       use: [
         'babel-loader',
         'stylelint-custom-processor-loader',
@@ -77,7 +77,7 @@ Give the path to a non-default named Stylelint config. The recommended way to sp
 module: {
   rules: [
     {
-      test: /\.jsx?/,
+      test: /\.jsx?$/,
       use: [
         'babel-loader',
         {
