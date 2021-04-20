@@ -1,3 +1,8 @@
+
+# NO LONGER MAINTAINED
+
+If you would like to maintain this feel free to reach out, but I'm archiving this for now as I'm not planning on maintaining it any further
+
 # stylelint-custom-processor-loader 
 
 A Webpack loader for stylelint used with custom processors
